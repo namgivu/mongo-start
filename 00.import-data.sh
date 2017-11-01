@@ -16,5 +16,5 @@ mkdir -p $(dirname ${IMPORT_FILE}) && \
   mongoimport --db ${DB_NAME} --collection ${DB_COLLECTION} --drop --file ${IMPORT_FILE}
 
 #query via cli / aftermath check
-q="db.$DB_COLLECTION.find()"                              && mongo --eval "$q" ${DB_HOST}/${DB_NAME}
+q="db.$DB_COLLECTION.find()"                            && mongo --eval "$q" ${DB_HOST}/${DB_NAME}
 q="db.$DB_COLLECTION.find( {'borough': 'Manhattan'} )"  && mongo --eval "$q" ${DB_HOST}/${DB_NAME}
