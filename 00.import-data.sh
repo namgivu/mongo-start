@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-: #req. install mongodb ref. https://github.com/namgivu/deploy-util/blob/master/util/bash_util/install-mongodb.sh
 : #ref. https://docs.mongodb.com/getting-started/shell/
 
 TEST_DATASET='https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json'
