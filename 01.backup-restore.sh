@@ -15,6 +15,12 @@ mkdir -p ${BACKUP_FOLDER} && \
 
 #do restore ref. https://docs.mongodb.com/manual/reference/program/mongorestore/#restore-from-compressed-data
 DB_NAME_RESTORE="${DB_NAME}_restore"
-mongorestore --gzip --archive=${BACKUP_FILE_GZ} --nsFrom "${DB_NAME}.*" --nsTo "${DB_NAME_RESTORE}.*"
+DB_COLLECTION='restaurants'
+  #v3_4_10
+  mongorestore --gzip --archive=${BACKUP_FILE_GZ} --nsFrom "${DB_NAME}.*" --nsTo "${DB_NAME_RESTORE}.*"
+
+  #v3_2_09
+  mongorestore --gzip --archive=${BACKUP_FILE_GZ} --db "${DB_NAME_RESTORE}" "${DB_NAME}.*"
+
   #restore aftermath check
   q="db.$DB_COLLECTION.find( {'borough': 'Manhattan'} )"  && mongo --eval "$q" ${DB_NAME_RESTORE}
