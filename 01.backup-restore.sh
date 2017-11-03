@@ -19,8 +19,10 @@ DB_COLLECTION='restaurants'
   #v3_4_10
   mongorestore --gzip --archive=${BACKUP_FILE_GZ} --nsFrom "${DB_NAME}.*" --nsTo "${DB_NAME_RESTORE}.*"
 
-  #v3_2_09
+  #v3_2_09 TODO still failing
   mongorestore --gzip --archive=${BACKUP_FILE_GZ} --db "${DB_NAME_RESTORE}" "${DB_NAME}.*"
+
+  : #v3_2_09 with extraction? Nope, the backup file created with --archive, so cannot ungzip it ref. https://dba.stackexchange.com/a/149276/52550
 
   : #restore aftermath check
   #check database
