@@ -14,7 +14,7 @@ mkdir -p ${BACKUP_FOLDER} && \
   ls -lh ${BACKUP_FILE_GZ}
 
 #do restore ref. https://docs.mongodb.com/manual/reference/program/mongorestore/#restore-from-compressed-data
-DB_NAME_RESTORE="${DB_NAME}_restore"
+DB_NAME_RESTORE="${DB_NAME}_restored"
 DB_COLLECTION='restaurants'
   #v3_4_10
   mongorestore --gzip --archive=${BACKUP_FILE_GZ} --nsFrom "${DB_NAME}.*" --nsTo "${DB_NAME_RESTORE}.*"
