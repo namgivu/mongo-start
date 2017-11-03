@@ -22,5 +22,8 @@ DB_COLLECTION='restaurants'
   #v3_2_09
   mongorestore --gzip --archive=${BACKUP_FILE_GZ} --db "${DB_NAME_RESTORE}" "${DB_NAME}.*"
 
-  #restore aftermath check
+  : #restore aftermath check
+  #check database
+  q="db.getMongo().getDBNames()"  && mongo --eval "$q" | grep ${DB_NAME_RESTORE} || echo "Database $DB_NAME_RESTORE not found"
+  #check data
   q="db.$DB_COLLECTION.find( {'borough': 'Manhattan'} )"  && mongo --eval "$q" ${DB_NAME_RESTORE}
