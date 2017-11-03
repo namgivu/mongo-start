@@ -16,4 +16,5 @@ db.getMongo().getDBNames()
 #list collections
 db.getCollectionNames()
 
+#note, we don't have rename command for db
 "
