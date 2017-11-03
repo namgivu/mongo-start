@@ -1,2 +1,2 @@
-- Have mongodb service ready via docker run at [mongodb-docker-run.sh](./mongodb-docker-run.sh)
+- Have mongodb service ready via docker run at [00a.mongodb-docker-run.sh](./00a.mongodb-docker-run.sh)
 - Follow numbered steps to get familiar ourseves with mongodb
