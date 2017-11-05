@@ -16,11 +16,14 @@ mkdir -p ${BACKUP_FOLDER} && \
 #do restore ref. https://docs.mongodb.com/manual/reference/program/mongorestore/#restore-from-compressed-data
 DB_NAME_RESTORE="${DB_NAME}_restored"
 DB_COLLECTION='restaurants'
+  #drop target db before restore
+  q="db.dropDatabase()"  && mongo --eval "$q" ${DB_NAME_RESTORE}
+
   #v3_4_10
   mongorestore --gzip --archive=${BACKUP_FILE_GZ} --nsFrom "${DB_NAME}.*" --nsTo "${DB_NAME_RESTORE}.*"
 
-  #v3_2_09 TODO still failing
-  mongorestore --gzip --archive=${BACKUP_FILE_GZ} --db "${DB_NAME_RESTORE}" "${DB_NAME}.*"
+  #v3_2_09 TODO still failing ref. https://dba.stackexchange.com/questions/189928/how-restore-from-gz-backup-with-new-database-name-using-mongorestore-r3-2-9/189938?noredirect=1#comment368934_189938
+  mongorestore --gzip --archive=${BACKUP_FILE_GZ} --db "${DB_NAME_RESTORE}" "${BACKUP_FILE_GZ}.*"
 
   : #v3_2_09 with extraction? Nope, the backup file created with --archive, so cannot ungzip it ref. https://dba.stackexchange.com/a/149276/52550
 
