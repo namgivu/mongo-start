@@ -23,3 +23,5 @@ qc=db.inventory.find({"$or": [{"status": "A"},
 #regex
 qc=db.inventory.find({"status": "A"}); mongo_print(qc)
 qc=db.inventory.find({"status": "A", "item": {"$regex": "^p"} }); mongo_print(qc)
+
+#TODO continue point https://docs.mongodb.com/manual/tutorial/query-documents/#additional-query-tutorials
