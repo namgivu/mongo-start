@@ -6,12 +6,16 @@ client = MongoClient('mongodb://{}:27017/'.format(DB_HOST), connect=False)
 db = client[DB_NAME]
 
 
+#region printing
+
 def mongo_print(query_cursor, count=False, pretty=False):
 
     #region print query result
     from pymongo.cursor import Cursor
+    from pymongo.command_cursor import CommandCursor
 
-    is_cursor = type(query_cursor) is Cursor
+    is_cursor = type(query_cursor) is Cursor or \
+                type(query_cursor) is CommandCursor
     is_dict   = type(query_cursor) is dict
 
     if False: pass
@@ -38,13 +42,18 @@ def _mongo_print_cursor(query_cursor, count=False, pretty=False):
     for d in docs: _mongo_print_dict(d, count, pretty)
     if len(docs)<=0: print('(nothing found)')
 
+
 from pprint import pprint
 def _mongo_print_dict(query_cursor, count=False, pretty=False):
     d = query_cursor #d i.e. a dict
     if pretty: pprint(d)
     else:      print(d)
 
+#endregion printing
+
 
 def exit():
     print('Exited on purpose')
     import sys; sys.exit()
+
+from datetime import datetime
