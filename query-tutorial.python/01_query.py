@@ -19,3 +19,7 @@ qc=db.inventory.find({"$or": [{"status": "A"}, {"qty": {"$lt": 50}}] }); mongo_p
 qc=db.inventory.find({"$or": [{"status": "A"},
                               {"qty": {"$lt": 50}},
                               ]                                      }); mongo_print(qc)
+
+#regex
+qc=db.inventory.find({"status": "A"}); mongo_print(qc)
+qc=db.inventory.find({"status": "A", "item": {"$regex": "^p"} }); mongo_print(qc)
