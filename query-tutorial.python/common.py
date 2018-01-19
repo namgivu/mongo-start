@@ -14,3 +14,6 @@ def mongo_print(query_cursor, pretty=False):
     else:
         docs=r
         for d in docs: print(d)
+
+    #a blank line at the end as ending separator
+    print()
