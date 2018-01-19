@@ -3,11 +3,14 @@ from common import *
 ##start here ref. https://docs.mongodb.com/manual/tutorial/query-documents/
 
 #all
-qc=db.inventory.find(); mongo_print(qc)
+qc=db.inventory.find()          ; mongo_print(qc)
+qc=db.inventory.find_one()      ; mongo_print(qc)
+qc=db.inventory.find().limit(1) ; mongo_print(qc)
 
 #in
-qc=db.inventory.find({"status": "D"                 }); mongo_print(qc)
-qc=db.inventory.find({"status": {"$in": ["A", "D"]} }); mongo_print(qc)
+qc=db.inventory.find({"status": "some invalid status"}); mongo_print(qc)
+qc=db.inventory.find({"status": "D"                  }); mongo_print(qc)
+qc=db.inventory.find({"status": {"$in": ["A", "D"]}  }); mongo_print(qc)
 
 #compare
 qc=db.inventory.find({"qty": 50           }); mongo_print(qc)

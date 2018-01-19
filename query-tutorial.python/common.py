@@ -7,20 +7,42 @@ db = client[DB_NAME]
 
 
 def mongo_print(query_cursor, count=False, pretty=False):
-    r = query_cursor; r=list(r)
-    if pretty:
-        from pprint import pprint
-        pprint(r)
-    else:
-        docs=r
-        for d in docs: print(d)
+
+    #region print query result
+    from pymongo.cursor import Cursor
+
+    is_cursor = type(query_cursor) is Cursor
+    is_dict   = type(query_cursor) is dict
+
+    if False: pass
+
+    elif is_cursor:
+        _mongo_print_cursor(query_cursor, count, pretty)
+    elif is_dict:
+        _mongo_print_dict(query_cursor, count, pretty)
+
+    else: raise Exception('Unsupported query_cursor type {}'.format(type(query_cursor)))
+    #endregion print query result
 
     #print found count
-    if count:
-        print('Found {}'.format(len(r)) )
+    if is_cursor: #only print count when NOT a list/cursor
+        if count:
+            print('Found {}'.format(len(query_cursor)) )
 
     #a blank line at the end as ending separator
     print()
+
+
+def _mongo_print_cursor(query_cursor, count=False, pretty=False):
+    docs = list(query_cursor)
+    for d in docs: _mongo_print_dict(d, count, pretty)
+    if len(docs)<=0: print('(nothing found)')
+
+from pprint import pprint
+def _mongo_print_dict(query_cursor, count=False, pretty=False):
+    d = query_cursor #d i.e. a dict
+    if pretty: pprint(d)
+    else:      print(d)
 
 
 def exit():
