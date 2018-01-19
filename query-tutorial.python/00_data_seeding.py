@@ -1,6 +1,6 @@
 from common import *
 
-db.inventory.delete_many({})
+db.inventory.delete_many({}) #clear all first
 
 db.inventory.insert_many([
     {"item":   "journal",
@@ -31,7 +31,7 @@ db.inventory.insert_many([
      "size":   {"h":   10, "w":   15.25, "uom":   "cm"},
      "status": "A",
      },
-])
+]) #do seeding
 
+mongo_print(query_cursor=db.inventory.find(), pretty=True)
 mongo_print(query_cursor=db.inventory.find())
-mongo_print(query_cursor=db.inventory.find(), pretty=False)
