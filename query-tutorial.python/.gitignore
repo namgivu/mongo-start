@@ -3,6 +3,7 @@
 .idea/modules.xml
 .idea/workspace.xml
 .idea/deployment.xml
+.idea/dictionaries/
 
 venv3/
 __pycache__/
