@@ -33,5 +33,5 @@ db.inventory.insert_many([
      },
 ])
 
-mongo_print(query_result=db.inventory.find())
-mongo_print(query_result=db.inventory.find(), pretty=False)
+mongo_print(query_cursor=db.inventory.find())
+mongo_print(query_cursor=db.inventory.find(), pretty=False)
