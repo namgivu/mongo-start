@@ -9,3 +9,9 @@ p=[{ "$project": { "_id":0, "name":{"$toUpper":"$_id"}  }}  ]; qc=db.users.aggre
 p=[{ "$project": { "_id":0, "name":{"$toUpper":"$_id"}  }},
    { "$sort" :   { "name":1                             }},
 ]; qc=db.users.aggregate(p); mongo_print(qc)
+
+#ordered by join month
+p=[{ "$project": { "_id":0, "name":"$_id", "month_joined":{ "$month" : "$joined" }  }},
+   { "$sort" :   { "month_joined":1  }},
+]; qc=db.users.aggregate(p); mongo_print(qc)
+
