@@ -17,3 +17,6 @@ def mongo_print(query_cursor, pretty=False):
 
     #a blank line at the end as ending separator
     print()
+
+def exit():
+    import sys; sys.exit()
