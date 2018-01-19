@@ -26,3 +26,9 @@ p=[{ "$project": { "yyyy": {"$year": "$joined"}  }},
    { "$sort":    { "_id.yyyy": 1  }},
    ]; qc=db.users.aggregate(p); mongo_print(qc)
 
+#top 2 common likes
+p=[{ "$unwind": "$likes" },
+   { "$group":  { "_id": "$likes", "qty": {"$sum": 1}  }},
+   { "$sort":   { "qty": -1  }},
+   { "$limit":  2 },
+   ]; qc=db.users.aggregate(p); mongo_print(qc)
