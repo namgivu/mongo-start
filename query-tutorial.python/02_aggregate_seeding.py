@@ -12,13 +12,24 @@ db.users.insert_many([
 
     {
       "_id"    : "jane",
-      "joined" : datetime.strptime("2011-03-02", "%Y-%m-%d"),
+      "joined" : datetime.strptime("2011-01-02", "%Y-%m-%d"),
       "likes"  : ["golf", "racquetball"],
     },
 
     {
       "_id"    : "joe",
-      "joined" : datetime.strptime("2012-07-02", "%Y-%m-%d"),
+      "joined" : datetime.strptime("2012-06-08", "%Y-%m-%d"),
+      "likes"  : ["tennis", "golf", "swimming"],
+    },
+
+    {
+      "_id"    : "jill",
+      "joined" : datetime.strptime("2012-06-02", "%Y-%m-%d"),
+      "likes"  : ["tennis", "golf", "swimming"],
+    },
+    {
+      "_id"    : "jack",
+      "joined" : datetime.strptime("2012-06-02", "%Y-%m-%d"),
       "likes"  : ["tennis", "golf", "swimming"],
     },
 
