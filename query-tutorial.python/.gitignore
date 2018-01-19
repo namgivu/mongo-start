@@ -1,6 +1,8 @@
+.idea/query-tutorial.python.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/workspace.xml
-.idea/query-tutorial.python.iml
+.idea/deployment.xml
 
 venv3/
+__pycache__/
