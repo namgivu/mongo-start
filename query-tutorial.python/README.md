@@ -41,6 +41,7 @@ About pipeline
               $limit
               $skip
               $out                   //output result to a collection - must be the LAST STAGE in the pipeline
+              $unwind                //split the array A, and clone the current document where each splitted value replaces the array field A
 
               
               //the understood
@@ -56,17 +57,23 @@ About pipeline
               $currentOp
               $geoNear $graphLookup
               $listLocalSessions $listSessions
-              $unwind
   ]
   ```
   
-  diff. betw. $addFields vs. $project
+  TODO diff. betw. $addFields vs. $project
      $addFields  just add new fields to current field set
      $project    can add or remove aka. reshape
      
   TODO diff. betw. $bucketXX vs. $group
   
   
+  TODO is it true?
+  db.col.find(FILTER) == db.col.aggregate({'$match':FILTER})
+  
+  
 mongo all accumulator/operator
 ===
 ref https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#aggregation-accumulator-operators
+```
+slice  //get sub array of an array
+```
