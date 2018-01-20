@@ -60,9 +60,13 @@ About pipeline
   ]
   ```
   
-  TODO diff. betw. $addFields vs. $project
+  diff. betw. $addFields vs. $project
      $addFields  just add new fields to current field set
-     $project    can add or remove aka. resharpe
+     $project    can add or remove aka. reshape
      
   TODO diff. betw. $bucketXX vs. $group
   
+  
+mongo all accumulator/operator
+===
+ref https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#aggregation-accumulator-operators
