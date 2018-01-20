@@ -110,7 +110,6 @@ p=[{'$group': { '_id':     {'state':'$state', 'city':'$city'},
                 'maxCity': {'$last':  '$_id.city'}, 'maxCityPop': {'$last':  '$cityPop'},
               }},
 ]; qc=db.zipcodes.aggregate(p); mongo_print(qc)
-
 p=[{'$group': { '_id':     {'state':'$state', 'city':'$city'},
                 'cityPop': {'$sum': '$pop'},
               }},
