@@ -31,7 +31,7 @@ def mongo_print(query_cursor, count=False, pretty=False):
     #print found count
     if is_cursor: #only print count when NOT a list/cursor
         if count:
-            print('Found {}'.format(len(query_cursor)) )
+            print('Found {}'.format(len(list(query_cursor))) )
 
     #a blank line at the end as ending separator
     print()
@@ -52,7 +52,7 @@ def _mongo_print_dict(query_cursor, count=False, pretty=False):
 #endregion printing
 
 
-def exit():
+def halt():
     print('Exited on purpose')
     import sys; sys.exit()
 
