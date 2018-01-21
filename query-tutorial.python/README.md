@@ -73,7 +73,9 @@ About pipeline
   
 mongo all accumulator/operator
 ===
-ref https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#aggregation-accumulator-operators
+https://docs.mongodb.com/manual/meta/aggregation-quick-reference/#aggregation-accumulator-operators
 ```
-slice  //get sub array of an array
+$slice       //get sub array of an array
+$substrBytes //convert int to string e.g. {'$substrBytes':['$someIntValue',0,-1] },
+
 ```
