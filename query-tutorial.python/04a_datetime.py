@@ -41,7 +41,7 @@ for t in tsAll:
   t.update(id=i); i+=1
 db.sandbox.insert_many(tsAll)
 
-#output
+#query
 ONE_SECOND = 1
 ONE_MINUTE = 60*ONE_SECOND
 ONE_HOUR   = 60*ONE_MINUTE
@@ -85,7 +85,7 @@ p=[
     'ts'      : '$ts',
     'id'      : '$id',
     'year_doy': '$year_doy',
-    'sod'     : {'$floor':{'$divide': ['$sod', 10]}} },
+    'sod'     : {'$floor':{'$divide': ['$sod', SAMPLING_THRESHOLD]}} },
   },
 
   {'$sort': {'year_doy':1, 'sod':1}},
@@ -97,5 +97,3 @@ p=[
   }},
   {'$sort': {'_id.year_doy': 1, '_id.sod': 1}},
 ]; qc=db.sandbox.aggregate(p); mongo_print(qc, pretty=False)
-
-# 'xx': {'$divide': ['$ts', SAMPLING_THRESHOLD]},
